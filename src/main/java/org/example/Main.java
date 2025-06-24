@@ -4,14 +4,34 @@ package org.example;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        BankAccount testAccount=new BankAccount("Maria");
+        BankAccount testAccountSecond=new BankAccount("Kate");
+
+        System.out.println(testAccount.toString());
+
+        testAccount.deposit(100);
+        System.out.println("Баланс "+testAccount.name+" после пополнения:"+testAccount.balance);
+
+        if(!testAccount.withdraw(200)){
+            System.out.println("Недостаточно средств");
         }
+        testAccount.withdraw(20);
+        System.out.println("Баланс "+testAccount.name+" после снятия средств:"+testAccount.balance);
+
+        if(!testAccount.transfer(testAccountSecond,1000)){
+            System.out.println("Недостаточно средств");
+        }
+        testAccount.transfer(testAccountSecond,10);
+        System.out.println("Баланс "+testAccount.name+" после перевода средств:"+testAccount.balance);
+        System.out.println("Баланс "+testAccountSecond.name+" после перевода средств:"+testAccountSecond.balance);
+
+        BankAccount testAccountThird=new BankAccount("Maria");//отличия в номере счета и времени создания
+        if(!testAccount.equals(testAccountThird)){
+            System.out.println("Это разные аккаунты");
+        }
+        System.out.println(testAccount.hashCode());
+        System.out.println(testAccountSecond.hashCode());
+
     }
 }
