@@ -1,28 +1,28 @@
-package org.example;
+package org.example.task1;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Random;
 
 public class BankAccount {
-    String name;
-    int balance=0;
+    public String name;
+    public int balance=0;
     LocalDateTime open_date=LocalDateTime.now();
     boolean status_block=false;
     String number;
 
-BankAccount(String name){
+public BankAccount(String name){
     this.name=name;
     this.number = generateNumber();
 }
-boolean deposit(int amount){
+public boolean deposit(int amount){
     if (amount > 0) {
         balance+=amount;
         return true;
     }
     return false;
 }
-boolean withdraw(int amount)
+public boolean withdraw(int amount)
 {
     if(balance>=amount&&amount>0) {
         balance-=amount;
@@ -30,7 +30,7 @@ boolean withdraw(int amount)
     }
     return false;
 }
-boolean transfer(BankAccount otherAccount, int amount)
+public boolean transfer(BankAccount otherAccount, int amount)
 {
     if(balance>=amount&&amount>0){
         balance-=amount;
